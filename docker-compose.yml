@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  node-das:
+    image: vicentevicedo/das
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+#    command: tail -F /dev/null
+    tty: true
+  angular-das:
+    image: angular/ngcontainer
+  db:
+    image: mysql:latest
+#    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'dasuser'
+      MYSQL_PASSWORD: 'daspassword'
+      MYSQL_ROOT_PASSWORD: 'Putincabron69'
+    volumes:
+       - db-data:/var/lib/mysql
+volumes:
+  db-data:
