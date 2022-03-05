@@ -3,21 +3,32 @@ const express = require('express')
 const app = express()
 const port = 8000
 
+
+//console.log(await knex.raw('CREATE TABLE test()'))
+
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Hello Nodemon!')
 })
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
 
+/*knex.raw('select 1+1 as result').then(function () {
+  // there is a valid connection in the pool
+});*/
+
 const knex = require('knex')({
   client: 'mysql',
   connection: {
-    host : '127.0.0.1',
+    host : 'db',
     port : 3306,
-    user : 'root',
-    password : 'das',
-    database : 'das-app'
+    user : 'dasuser',
+    password : 'daspassword',
+    database : 'das_app'
   }
 });
+
+/*knex.raw('select 1+1 as result').then(function () {
+  // there is a valid connection in the pool
+});*/

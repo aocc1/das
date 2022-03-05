@@ -8,8 +8,15 @@ services:
       - ./app:/app
 #    command: tail -F /dev/null
     tty: true
+    networks:
+      - frontend
+      - backend
+    links:
+      - "db:database"
   angular-das:
     image: angular/ngcontainer
+#    network:
+#      - frontend
   db:
     image: mysql:latest
 #    restart: always
@@ -22,5 +29,10 @@ services:
       MYSQL_ROOT_PASSWORD: 'Putincabron69'
     volumes:
        - db-data:/var/lib/mysql
+    networks:
+       - backend
 volumes:
   db-data:
+networks:
+  frontend:
+  backend:
