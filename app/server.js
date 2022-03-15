@@ -25,10 +25,8 @@ const knex = require('knex')({
     port : 3306,
     user : 'dasuser',
     password : 'daspassword',
-    database : 'das_app'
+    database : 'db'
   }
 });
 
-/*knex.raw('select 1+1 as result').then(function () {
-  // there is a valid connection in the pool
-});*/
+
