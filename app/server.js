@@ -16,7 +16,24 @@ app.listen(port, () => {
 
 /*knex.raw('select 1+1 as result').then(function () {
   // there is a valid connection in the pool
-});*/
+});
+
+
+ knex.schema
+        .createTable("user", (table) => {
+            table.increments()
+            table.string("name")
+            table.string("description")
+        })
+        .then(() =>
+            knex("user).insert([
+                {name: "A", description: "A"},
+                {name: "B", description: "BB"},
+                {name: "C", description: "CCC"},
+                {name: "D", description: "DDDD"},
+            ])
+        )
+*/
 
 const knex = require('knex')({
   client: 'mysql',
